@@ -24,6 +24,9 @@ jobs:
           # Pytorch <= 1.12 does not support Python 3.11
           - torch-version: "2.3.1"
             cuda-version: "12.4.0"
+          # Pytorch >= 2.5 only supports Python >= 3.9
+          - torch-version: "2.5.1"
+            python-version: "3.8"
 
     steps:
       - name: Free Disk Space (Ubuntu)
