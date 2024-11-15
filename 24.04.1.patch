@@ -1,0 +1,48 @@
+diff --git a/apex/contrib/csrc/nccl_allocator/NCCLAllocator.cpp b/apex/contrib/csrc/nccl_allocator/NCCLAllocator.cpp
+index 1c4a705..d00c177 100644
+--- a/apex/contrib/csrc/nccl_allocator/NCCLAllocator.cpp
++++ b/apex/contrib/csrc/nccl_allocator/NCCLAllocator.cpp
+@@ -432,4 +432,20 @@ void NCCLAllocator::copy_data(void* dest, const void* src, std::size_t count)
+       cudaMemcpy(dest, src, count, cudaMemcpyKind::cudaMemcpyDeviceToDevice));
+ }
+ 
++#if (TORCH_VERSION_MAJOR >= 2 && TORCH_VERSION_MAJOR >= 5)
++c10::cuda::CUDACachingAllocator::ShareableHandle NCCLAllocator::
++    shareIpcHandle(void* ptr) {
++  TORCH_CHECK(
++      false,
++      "CUDAPluggableAllocator does not yet support shareIPcHandle. "
++      "If you need it, please file an issue describing your use case.");
++}
++
++void NCCLAllocator::enable(bool) {}
++
++bool NCCLAllocator::isEnabled() const {
++  return true;
++}
++#endif
++
+ } // namespace nccl_allocator::cuda
+diff --git a/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h b/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h
+index 3a4e76b..61b3fb5 100644
+--- a/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h
++++ b/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <torch/version.h>
+ #include <c10/core/Allocator.h>
+ #include <c10/cuda/CUDAMacros.h>
+ #include <c10/cuda/CUDAStream.h>
+@@ -85,6 +86,11 @@ struct NCCLAllocator
+       bool p2p_enabled) override;
+   std::string name() override;
+   void copy_data(void* dest, const void* src, std::size_t count) const;
++#if (TORCH_VERSION_MAJOR >= 2 && TORCH_VERSION_MAJOR >= 5)
++  c10::cuda::CUDACachingAllocator::ShareableHandle shareIpcHandle(void*) override;
++  void enable(bool) override;
++  bool isEnabled() const override;
++#endif
+ 
+  protected:
+   std::function<void(int)> init_fn_;
