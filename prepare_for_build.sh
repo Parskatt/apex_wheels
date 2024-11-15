@@ -22,6 +22,9 @@ python -m pip --version
 gcc --version
 nvcc --version
 
+echo "patch for torch 2.5"
+git apply /project/build_scripts/24.04.1.patch
+
 echo "install torch==${CI_TORCH_VERSION}+cu${TORCH_CUDA_VERSION}"
 python -m pip install --no-cache-dir torch==${CI_TORCH_VERSION} --index-url https://download.pytorch.org/whl/cu${TORCH_CUDA_VERSION}
 
