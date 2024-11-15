@@ -6,7 +6,6 @@ index 1c4a705..d00c177 100644
        cudaMemcpy(dest, src, count, cudaMemcpyKind::cudaMemcpyDeviceToDevice));
  }
  
-+#if (TORCH_VERSION_MAJOR >= 2 && TORCH_VERSION_MAJOR >= 5)
 +c10::cuda::CUDACachingAllocator::ShareableHandle NCCLAllocator::
 +    shareIpcHandle(void* ptr) {
 +  TORCH_CHECK(
@@ -20,8 +19,6 @@ index 1c4a705..d00c177 100644
 +bool NCCLAllocator::isEnabled() const {
 +  return true;
 +}
-+#endif
-+
  } // namespace nccl_allocator::cuda
 diff --git a/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h b/apex/contrib/csrc/nccl_allocator/NCCLAllocator.h
 index 3a4e76b..61b3fb5 100644
@@ -38,11 +35,10 @@ index 3a4e76b..61b3fb5 100644
        bool p2p_enabled) override;
    std::string name() override;
    void copy_data(void* dest, const void* src, std::size_t count) const;
-+#if (TORCH_VERSION_MAJOR >= 2 && TORCH_VERSION_MAJOR >= 5)
 +  c10::cuda::CUDACachingAllocator::ShareableHandle shareIpcHandle(void*) override;
 +  void enable(bool) override;
 +  bool isEnabled() const override;
-+#endif
+
  
   protected:
    std::function<void(int)> init_fn_;
