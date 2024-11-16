@@ -23,7 +23,7 @@ gcc --version
 nvcc --version
 
 TCH_VER=${MATRIX_TORCH_VERSION//./}
-if [ ${TCH_VER} -gt 25 ]; then
+if [ ${TCH_VER} -ge 25 ]; then
     echo "Patch for torch 2.5"
     git apply /project/build_scripts/24.04.1.patch
 fi
