@@ -28,6 +28,8 @@ if [ ${TCH_VER} -ge 25 ]; then
     git apply /project/build_scripts/24.04.1.patch
 fi
 
+git apply /project/build_scripts/25.04.patch
+
 echo "install torch==${CI_TORCH_VERSION}+cu${TORCH_CUDA_VERSION}"
 python -m pip install --no-cache-dir torch==${CI_TORCH_VERSION} --index-url https://download.pytorch.org/whl/cu${TORCH_CUDA_VERSION}
 

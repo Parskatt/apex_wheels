@@ -1,0 +1,27 @@
+diff --git a/setup.py b/setup.py
+index 4aa6616..76c7875 100644
+--- a/setup.py
++++ b/setup.py
+@@ -477,11 +477,17 @@ if "--group_norm" in sys.argv:
+ 
+     # CUDA group norm supports from SM70
+     arch_flags = []
+-    # FIXME: this needs to be done more cleanly
+-    for arch in [70, 75, 80, 86, 90, 100, 120]:
+-        arch_flag = f"-gencode=arch=compute_{arch},code=sm_{arch}"
+-        arch_flags.append(arch_flag)
+-    arch_flags.append(arch_flag)
++
++    arch_flags.append("-gencode=arch=compute_70,code=sm_70")
++
++    if bare_metal_version >= Version("11.0"):
++        arch_flags.append("-gencode=arch=compute_75,code=sm_75")
++        arch_flags.append("-gencode=arch=compute_80,code=sm_80")
++    if bare_metal_version >= Version("11.8"):
++        arch_flags.append("-gencode=arch=compute_90,code=sm_90")
++    if bare_metal_version >= Version("12.8"):
++        arch_flags.append("-gencode=arch=compute_100,code=sm_100")
++        arch_flags.append("-gencode=arch=compute_120,code=sm_120")
+ 
+     ext_modules.append(
+         CUDAExtension(
