@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index 4aa6616..1f861a0 100644
+index 4aa6616..40ee33c 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -477,11 +477,17 @@ if "--group_norm" in sys.argv:
@@ -25,15 +25,16 @@ index 4aa6616..1f861a0 100644
  
      ext_modules.append(
          CUDAExtension(
-@@ -500,31 +506,27 @@ if "--group_norm" in sys.argv:
+@@ -500,31 +506,36 @@ if "--group_norm" in sys.argv:
      )
  
      # CUDA group norm V2 is tested on SM100
 -    if bare_metal_version >= Version("12.8"):
 -        arch_flags = ["-gencode=arch=compute_100,code=sm_100"]
 -    else:
--        arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
--
++    if bare_metal_version >= Version("12.4"):
+         arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
+ 
 -    ext_modules.append(
 -        CUDAExtension(
 -            name="group_norm_v2_cuda",
@@ -52,7 +53,13 @@ index 4aa6616..1f861a0 100644
 -                    "-U__CUDA_NO_BFLOAT16_OPERATORS__",
 -                ] + arch_flags + version_dependent_macros,
 -            },
-+    if bare_metal_version >= Version("12.8"):
++        if bare_metal_version >= Version("12.8"):
++            arch_flags.extend([
++                "-gencode=arch=compute_100,code=compute_100",
++                "-gencode=arch=compute_120,code=compute_120",
++            ])
++            
++
 +        ext_modules.append(
 +            CUDAExtension(
 +                name="group_norm_v2_cuda",
