@@ -52,7 +52,7 @@ index 4aa6616..1f861a0 100644
 -                    "-U__CUDA_NO_BFLOAT16_OPERATORS__",
 -                ] + arch_flags + version_dependent_macros,
 -            },
-+    if bare_metal_version >= Version("12.4"):
++    if bare_metal_version >= Version("12.8"):
 +        ext_modules.append(
 +            CUDAExtension(
 +                name="group_norm_v2_cuda",
