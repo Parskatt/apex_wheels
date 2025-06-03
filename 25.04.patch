@@ -1,7 +1,28 @@
 diff --git a/setup.py b/setup.py
-index 4aa6616..40ee33c 100644
+index 4aa6616..71cef59 100644
 --- a/setup.py
 +++ b/setup.py
+@@ -87,15 +87,15 @@ if not torch.cuda.is_available():
+     if os.environ.get("TORCH_CUDA_ARCH_LIST", None) is None and CUDA_HOME is not None:
+         _, bare_metal_version = get_cuda_bare_metal_version(CUDA_HOME)
+         if bare_metal_version >= Version("12.8"):
+-            os.environ["TORCH_CUDA_ARCH_LIST"] = "7.0;7.5;8.0;8.6;9.0;10.0;12.0"
++            os.environ["TORCH_CUDA_ARCH_LIST"] = "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+         elif bare_metal_version >= Version("11.8"):
+-            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0"
++            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+         elif bare_metal_version >= Version("11.1"):
+-            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0;8.6"
++            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0;8.6+PTX"
+         elif bare_metal_version == Version("11.0"):
+-            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0"
++            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5;8.0+PTX"
+         else:
+-            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5"
++            os.environ["TORCH_CUDA_ARCH_LIST"] = "6.0;6.1;6.2;7.0;7.5+PTX"
+ 
+ print("\n\ntorch.__version__  = {}\n\n".format(torch.__version__))
+ TORCH_MAJOR = int(torch.__version__.split(".")[0])
 @@ -477,11 +477,17 @@ if "--group_norm" in sys.argv:
  
      # CUDA group norm supports from SM70
@@ -25,7 +46,7 @@ index 4aa6616..40ee33c 100644
  
      ext_modules.append(
          CUDAExtension(
-@@ -500,31 +506,36 @@ if "--group_norm" in sys.argv:
+@@ -500,31 +506,35 @@ if "--group_norm" in sys.argv:
      )
  
      # CUDA group norm V2 is tested on SM100
@@ -58,7 +79,6 @@ index 4aa6616..40ee33c 100644
 +                "-gencode=arch=compute_100,code=compute_100",
 +                "-gencode=arch=compute_120,code=compute_120",
 +            ])
-+            
 +
 +        ext_modules.append(
 +            CUDAExtension(
