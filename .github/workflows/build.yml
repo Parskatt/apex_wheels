@@ -999,9 +999,9 @@ jobs:
           TCH_VER=${MATRIX_TORCH_VERSION//./}
           if [ ${TCH_VER} -ge 25 ]; then
               echo "Patch for torch 2.5"
-              git apply /project/build_scripts/24.04.1.patch
+              git apply build_scripts/24.04.1.patch
           fi
-          git apply /project/build_scripts/25.04.patch
+          git apply build_scripts/25.04.patch
 
       - name: Set up Python
         uses: actions/setup-python@v5
