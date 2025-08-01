@@ -1010,7 +1010,6 @@ jobs:
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.cibw-build-image }}
           CIBW_BEFORE_BUILD_LINUX: >
             sed -i "s/version=\"0.1\"/version=\"$(git describe --tags)+torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
-            sed -i '$a [tool.cibuildwheel]\nbuild-frontend = { name = "pip", args = ["--no-build-isolation", "--no-cache-dir", "--disable-pip-version-check"] }' /project/pyproject.toml &&
             python -m pip install -U pip setuptools wheel packaging auditwheel-symbols ninja cmake numpy &&
             python -m pip install --no-cache-dir torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu${{ matrix.cibw-build-torch-cuda-version }}
           CIBW_ENVIRONMENT: >
@@ -1019,7 +1018,6 @@ jobs:
             CFLAGS="-I/usr/include" 
             LDFLAGS="-L/usr/lib" 
             AUDITWHEEL_PLAT="manylinux_2_28_$(uname -m)" 
-            NVTE_NO_LOCAL_VERSION=1 
             MAX_JOBS=1
             APEX_CPP_EXT=1
             APEX_CUDA_EXT=1
