@@ -2,9 +2,7 @@
 import yaml
 
 versions = {
-    "1.12.1": {"python": [8, 9, 10], "cuda": [113, 116], "deepcompile": 0},
-    "1.13.1": {"python": [8, 9, 10], "cuda": [116, 117], "deepcompile": 0},
-    "2.0.1": {"python": [8, 9, 10, 11], "cuda": [117, 118], "deepcompile": 0},
+    "2.0.1": {"python": [8, 9, 10, 11], "cuda": [118], "deepcompile": 0},
     "2.1.2": {"python": [8, 9, 10, 11], "cuda": [118, 121], "deepcompile": 0},
     "2.2.2": {"python": [8, 9, 10, 11], "cuda": [118, 121], "deepcompile": 0},
     "2.3.1": {"python": [8, 9, 10, 11], "cuda": [118, 121], "deepcompile": 0},
@@ -16,9 +14,6 @@ versions = {
 }
 
 cuda_version_mapping = {
-    113: "11.3.0",
-    116: "11.6.0",
-    117: "11.7.0",
     118: "11.8.0",
     121: "12.1.1",
     124: "12.4.0",
