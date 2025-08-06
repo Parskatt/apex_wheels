@@ -625,7 +625,7 @@ jobs:
         with:
           repository: NVIDIA/apex
           submodules: recursive
-          ref: 25.07
+          ref: 4bdecd06b3c4b2c0a8fb6603829a8f9f05a42b49
 
       - name: Checkout utils
         uses: actions/checkout@v4
@@ -653,7 +653,7 @@ jobs:
           CIBW_BUILD: ${{ matrix.cibw-build }}
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.cibw-build-image }}
           CIBW_BEFORE_BUILD_LINUX: >
-            sed -i "s/version=\"0.1\"/version=\"$(git describe --tags)+torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
+            sed -i "s/version=\"0.1\"/version=\"0.1+2025.08.05+torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
             python -m pip install -U pip setuptools wheel packaging auditwheel-symbols ninja cmake numpy &&
             python -m pip install --no-cache-dir torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu${{ matrix.cibw-build-torch-cuda-version }}
           CIBW_ENVIRONMENT: >
@@ -668,7 +668,6 @@ jobs:
             APEX_CUDA_EXT=1
             APEX_ALL_CONTRIB_EXT=1
           CIBW_SKIP: "*musllinux*"
-          CIBW_CONFIG_SETTINGS: --build-option=--cpp_ext --build-option=--cuda_ext --build-option=--permutation_search --build-option=--bnp --build-option=--xentropy --build-option=--focal_loss --build-option=--index_mul_2d --build-option=--deprecated_fused_adam --build-option=--deprecated_fused_lamb --build-option=--fast_layer_norm --build-option=--fmha --build-option=--fast_multihead_attn --build-option=--transducer --build-option=--cudnn_gbn --build-option=--peer_memory --build-option=--nccl_p2p --build-option=--fast_bottleneck --build-option=--group_norm --build-option=--fused_conv_bias_relu --build-option=--nccl_allocator --build-option=--gpu_direct_storage --build-option=--distributed_adam --build-option=--distributed_lamb
           CIBW_BUILD_FRONTEND: "pip; args: --no-build-isolation"
           CIBW_REPAIR_WHEEL_COMMAND_LINUX: "auditwheel repair -w /tmp/cibuildwheel/repaired_wheel {wheel} --exclude libc10.so --exclude libc10* --exclude libtorch.so --exclude libtorch* --exclude libcu* --exclude libnccl*"
           
