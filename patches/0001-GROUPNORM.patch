@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index 4aa6616..878d7f7 100644
+index fa61b72..2192035 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -477,11 +477,16 @@ if "--group_norm" in sys.argv:
+@@ -532,11 +532,15 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
  
      # CUDA group norm supports from SM70
      arch_flags = []
@@ -12,7 +12,6 @@ index 4aa6616..878d7f7 100644
 -        arch_flags.append(arch_flag)
 -    arch_flags.append(arch_flag)
 +    arch_flags.append("-gencode=arch=compute_70,code=sm_70")
-+
 +    if bare_metal_version >= Version("11.0"):
 +        arch_flags.append("-gencode=arch=compute_75,code=sm_75")
 +        arch_flags.append("-gencode=arch=compute_80,code=sm_80")
@@ -24,7 +23,7 @@ index 4aa6616..878d7f7 100644
  
      ext_modules.append(
          CUDAExtension(
-@@ -500,31 +505,36 @@ if "--group_norm" in sys.argv:
+@@ -555,31 +559,35 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
      )
  
      # CUDA group norm V2 is tested on SM100
@@ -32,16 +31,7 @@ index 4aa6616..878d7f7 100644
 -        arch_flags = ["-gencode=arch=compute_100,code=sm_100"]
 -    else:
 -        arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
-+    if bare_metal_version >= Version("12.4"):
-+        if bare_metal_version >= Version("12.8"):
-+            arch_flags = [
-+                "-gencode=arch=compute_90,code=sm_90",
-+                "-gencode=arch=compute_100,code=sm_100",
-+                "-gencode=arch=compute_120,code=compute_120",
-+            ]
-+        else:
-+            arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
- 
+-
 -    ext_modules.append(
 -        CUDAExtension(
 -            name="group_norm_v2_cuda",
@@ -60,6 +50,15 @@ index 4aa6616..878d7f7 100644
 -                    "-U__CUDA_NO_BFLOAT16_OPERATORS__",
 -                ] + arch_flags + version_dependent_macros,
 -            },
++    if bare_metal_version >= Version("12.4"):
++        if bare_metal_version >= Version("12.8"):
++            arch_flags = [
++                "-gencode=arch=compute_90,code=sm_90",
++                "-gencode=arch=compute_100,code=sm_100",
++                "-gencode=arch=compute_120,code=compute_120",
++            ]
++        else:
++            arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
 +        ext_modules.append(
 +            CUDAExtension(
 +                name="group_norm_v2_cuda",
@@ -82,5 +81,5 @@ index 4aa6616..878d7f7 100644
          )
 -    )
  
- if "--index_mul_2d" in sys.argv:
-     sys.argv.remove("--index_mul_2d")
+ if has_flag("--index_mul_2d", "APEX_INDEX_MUL_2D"):
+     if "--index_mul_2d" in sys.argv:
