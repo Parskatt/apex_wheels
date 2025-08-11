@@ -653,7 +653,7 @@ jobs:
           CIBW_BUILD: ${{ matrix.cibw-build }}
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.cibw-build-image }}
           CIBW_BEFORE_BUILD_LINUX: >
-            sed -i "s/version=\"0.1\"/version=\"0.1+2025.08.05+torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
+            sed -i "s/version=\"0.1\"/version=\"0.1+2025.08.05torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
             python -m pip install -U pip setuptools wheel packaging auditwheel-symbols ninja cmake numpy &&
             python -m pip install --no-cache-dir torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu${{ matrix.cibw-build-torch-cuda-version }}
           CIBW_ENVIRONMENT: >
