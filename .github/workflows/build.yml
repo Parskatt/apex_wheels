@@ -21,7 +21,6 @@ jobs:
             python-version: "3.8"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp38-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -31,7 +30,6 @@ jobs:
             python-version: "3.8"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp38-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -41,7 +39,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -51,7 +48,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -61,7 +57,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -71,7 +66,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -81,7 +75,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -91,7 +84,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -101,7 +93,6 @@ jobs:
             python-version: "3.8"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp38-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -111,7 +102,6 @@ jobs:
             python-version: "3.8"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp38-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -121,7 +111,6 @@ jobs:
             python-version: "3.8"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp38-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -131,7 +120,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -141,7 +129,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -151,7 +138,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -161,7 +147,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -171,7 +156,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -181,7 +165,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -191,7 +174,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -201,7 +183,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -211,7 +192,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -221,7 +201,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -231,7 +210,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -241,7 +219,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -251,7 +228,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -261,7 +237,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -271,7 +246,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -281,7 +255,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -291,7 +264,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -301,7 +273,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -311,7 +282,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -321,7 +291,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.1.1"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.1"
             cibw-build-cuda-version: "12.1"
@@ -331,7 +300,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 0
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -341,7 +309,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -351,7 +318,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -361,7 +327,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -371,7 +336,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -381,7 +345,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -391,7 +354,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -401,7 +363,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -411,7 +372,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -421,7 +381,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -431,7 +390,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -441,7 +399,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.4.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.4"
             cibw-build-cuda-version: "12.4"
@@ -451,7 +408,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -461,7 +417,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -471,7 +426,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -481,7 +435,6 @@ jobs:
             python-version: "3.9"
             cuda-version: "12.8.0"
             arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
-            deepcompile: 1
             cibw-build: "cp39-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
             cibw-build-cuda-version: "12.8"
@@ -491,7 +444,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -501,7 +453,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -511,7 +462,6 @@ jobs:
             python-version: "3.10"
             cuda-version: "12.8.0"
             arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
-            deepcompile: 1
             cibw-build: "cp310-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
             cibw-build-cuda-version: "12.8"
@@ -521,7 +471,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -531,7 +480,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -541,7 +489,6 @@ jobs:
             python-version: "3.11"
             cuda-version: "12.8.0"
             arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
-            deepcompile: 1
             cibw-build: "cp311-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
             cibw-build-cuda-version: "12.8"
@@ -551,7 +498,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -561,7 +507,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -571,7 +516,6 @@ jobs:
             python-version: "3.12"
             cuda-version: "12.8.0"
             arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
-            deepcompile: 1
             cibw-build: "cp312-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
             cibw-build-cuda-version: "12.8"
@@ -581,7 +525,6 @@ jobs:
             python-version: "3.13"
             cuda-version: "11.8.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp313-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda11.8"
             cibw-build-cuda-version: "11.8"
@@ -591,7 +534,6 @@ jobs:
             python-version: "3.13"
             cuda-version: "12.6.0"
             arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
-            deepcompile: 1
             cibw-build: "cp313-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
             cibw-build-cuda-version: "12.6"
@@ -601,12 +543,146 @@ jobs:
             python-version: "3.13"
             cuda-version: "12.8.0"
             arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
-            deepcompile: 1
             cibw-build: "cp313-*64"
             cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
             cibw-build-cuda-version: "12.8"
             cibw-build-torch-cuda-version: "128"
             cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.9"
+            cuda-version: "12.6.0"
+            arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+            cibw-build: "cp39-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
+            cibw-build-cuda-version: "12.6"
+            cibw-build-torch-cuda-version: "126"
+            cibw-build-cuda-compat-version: "12-6"
+          - torch-version: "2.8.0"
+            python-version: "3.9"
+            cuda-version: "12.8.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp39-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
+            cibw-build-cuda-version: "12.8"
+            cibw-build-torch-cuda-version: "128"
+            cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.9"
+            cuda-version: "12.9.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp39-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.9"
+            cibw-build-cuda-version: "12.9"
+            cibw-build-torch-cuda-version: "129"
+            cibw-build-cuda-compat-version: "12-9"
+          - torch-version: "2.8.0"
+            python-version: "3.10"
+            cuda-version: "12.6.0"
+            arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+            cibw-build: "cp310-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
+            cibw-build-cuda-version: "12.6"
+            cibw-build-torch-cuda-version: "126"
+            cibw-build-cuda-compat-version: "12-6"
+          - torch-version: "2.8.0"
+            python-version: "3.10"
+            cuda-version: "12.8.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp310-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
+            cibw-build-cuda-version: "12.8"
+            cibw-build-torch-cuda-version: "128"
+            cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.10"
+            cuda-version: "12.9.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp310-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.9"
+            cibw-build-cuda-version: "12.9"
+            cibw-build-torch-cuda-version: "129"
+            cibw-build-cuda-compat-version: "12-9"
+          - torch-version: "2.8.0"
+            python-version: "3.11"
+            cuda-version: "12.6.0"
+            arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+            cibw-build: "cp311-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
+            cibw-build-cuda-version: "12.6"
+            cibw-build-torch-cuda-version: "126"
+            cibw-build-cuda-compat-version: "12-6"
+          - torch-version: "2.8.0"
+            python-version: "3.11"
+            cuda-version: "12.8.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp311-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
+            cibw-build-cuda-version: "12.8"
+            cibw-build-torch-cuda-version: "128"
+            cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.11"
+            cuda-version: "12.9.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp311-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.9"
+            cibw-build-cuda-version: "12.9"
+            cibw-build-torch-cuda-version: "129"
+            cibw-build-cuda-compat-version: "12-9"
+          - torch-version: "2.8.0"
+            python-version: "3.12"
+            cuda-version: "12.6.0"
+            arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+            cibw-build: "cp312-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
+            cibw-build-cuda-version: "12.6"
+            cibw-build-torch-cuda-version: "126"
+            cibw-build-cuda-compat-version: "12-6"
+          - torch-version: "2.8.0"
+            python-version: "3.12"
+            cuda-version: "12.8.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp312-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
+            cibw-build-cuda-version: "12.8"
+            cibw-build-torch-cuda-version: "128"
+            cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.12"
+            cuda-version: "12.9.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp312-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.9"
+            cibw-build-cuda-version: "12.9"
+            cibw-build-torch-cuda-version: "129"
+            cibw-build-cuda-compat-version: "12-9"
+          - torch-version: "2.8.0"
+            python-version: "3.13"
+            cuda-version: "12.6.0"
+            arch: "6.0;6.1;6.2;7.0;7.5;8.0;8.6;9.0+PTX"
+            cibw-build: "cp313-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.6"
+            cibw-build-cuda-version: "12.6"
+            cibw-build-torch-cuda-version: "126"
+            cibw-build-cuda-compat-version: "12-6"
+          - torch-version: "2.8.0"
+            python-version: "3.13"
+            cuda-version: "12.8.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp313-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.8"
+            cibw-build-cuda-version: "12.8"
+            cibw-build-torch-cuda-version: "128"
+            cibw-build-cuda-compat-version: "12-8"
+          - torch-version: "2.8.0"
+            python-version: "3.13"
+            cuda-version: "12.9.0"
+            arch: "7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+            cibw-build: "cp313-*64"
+            cibw-build-image: "pytorch/manylinux2_28-builder:cuda12.9"
+            cibw-build-cuda-version: "12.9"
+            cibw-build-torch-cuda-version: "129"
+            cibw-build-cuda-compat-version: "12-9"
 
     steps:
       - name: Free Disk Space (Ubuntu)
@@ -653,7 +729,7 @@ jobs:
           CIBW_BUILD: ${{ matrix.cibw-build }}
           CIBW_MANYLINUX_X86_64_IMAGE: ${{ matrix.cibw-build-image }}
           CIBW_BEFORE_BUILD_LINUX: >
-            sed -i "s/version=\"0.1\"/version=\"0.1+2025.08.05torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
+            sed -i "s/version=\"0.1\"/version=\"0.1+2025.08.15torch${{ matrix.torch-version }}cu${{ matrix.cibw-build-torch-cuda-version }}\"/g" /project/setup.py &&
             python -m pip install -U pip setuptools wheel packaging auditwheel-symbols ninja cmake numpy &&
             python -m pip install --no-cache-dir torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu${{ matrix.cibw-build-torch-cuda-version }}
           CIBW_ENVIRONMENT: >

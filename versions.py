@@ -7,7 +7,7 @@ versions = {
     "2.5.1": {"python": [9, 10, 11, 12], "cuda": [118, 121, 124], "deepcompile": 0},
     "2.6.0": {"python": [9, 10, 11, 12], "cuda": [118, 124, 126], "deepcompile": 1},
     "2.7.1": {"python": [9, 10, 11, 12, 13], "cuda": [118, 126, 128], "deepcompile": 1},
-    # "2.8.0": {"python": [9, 10, 11, 12, 13], "cuda": [126, 128, 129], "deepcompile": 1},
+    "2.8.0": {"python": [9, 10, 11, 12, 13], "cuda": [126, 128, 129], "deepcompile": 1},
 }
 
 cuda_version_mapping = {
@@ -49,7 +49,7 @@ for torch_version, python_version, cuda_version, raw_cuda_version in pairs:
     print(f'  python-version: "{python_version}"')
     print(f'  cuda-version: "{cuda_version}"')
     print(f'  arch: "{cuda_arch[cuda_version]}"')
-    print(f"  deepcompile: {versions[torch_version]['deepcompile']}")
+    # print(f"  deepcompile: {versions[torch_version]['deepcompile']}")
 
     print(f'  cibw-build: "cp{python_version.replace(".", "")}-*64"')
     print(f'  cibw-build-image: "pytorch/manylinux2_28-builder:cuda{cuda_version[:-2]}"')
