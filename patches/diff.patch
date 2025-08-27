@@ -1,0 +1,340 @@
+diff --git a/setup.py b/setup.py
+index fa61b72..8348797 100644
+--- a/setup.py
++++ b/setup.py
+@@ -203,6 +203,7 @@ if has_flag("--distributed_adam", "APEX_DISTRIBUTED_ADAM"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -222,6 +223,7 @@ if has_flag("--distributed_lamb", "APEX_DISTRIBUTED_LAMB"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -260,6 +262,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--use_fast_math",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+     ext_modules.append(
+@@ -270,6 +273,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -281,6 +285,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-maxrregcount=50", "-O3", "--use_fast_math"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -292,6 +297,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+     ext_modules.append(
+@@ -302,6 +308,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -323,6 +330,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--expt-extended-lambda",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -344,6 +352,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--expt-extended-lambda",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -362,6 +371,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--expt-extended-lambda",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -380,6 +390,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--expt-extended-lambda",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -401,6 +412,7 @@ if has_flag("--cuda_ext", "APEX_CUDA_EXT"):
+                     "--expt-extended-lambda",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -484,6 +496,7 @@ if has_flag("--bnp", "APEX_BNP"):
+                     "-D__CUDA_NO_HALF2_OPERATORS__",
+                 ] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -503,6 +516,7 @@ if has_flag("--xentropy", "APEX_XENTROPY"):
+                 "cxx": ["-O3"] + version_dependent_macros + [f'-DXENTROPY_VER="{xentropy_ver}"'],
+                 "nvcc": ["-O3"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -522,6 +536,7 @@ if has_flag("--focal_loss", "APEX_FOCAL_LOSS"):
+                 'cxx': ['-O3'] + version_dependent_macros,
+                 'nvcc':['-O3', '--use_fast_math', '--ftz=false'] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -532,11 +547,15 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
+ 
+     # CUDA group norm supports from SM70
+     arch_flags = []
+-    # FIXME: this needs to be done more cleanly
+-    for arch in [70, 75, 80, 86, 90, 100, 120]:
+-        arch_flag = f"-gencode=arch=compute_{arch},code=sm_{arch}"
+-        arch_flags.append(arch_flag)
+-    arch_flags.append(arch_flag)
++    arch_flags.append("-gencode=arch=compute_70,code=sm_70")
++    if bare_metal_version >= Version("11.0"):
++        arch_flags.append("-gencode=arch=compute_75,code=sm_75")
++        arch_flags.append("-gencode=arch=compute_80,code=sm_80")
++    if bare_metal_version >= Version("11.8"):
++        arch_flags.append("-gencode=arch=compute_90,code=sm_90")
++    if bare_metal_version >= Version("12.8"):
++        arch_flags.append("-gencode=arch=compute_100,code=sm_100")
++        arch_flags.append("-gencode=arch=compute_120,code=sm_120")
+ 
+     ext_modules.append(
+         CUDAExtension(
+@@ -551,35 +570,41 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
+                     "-O3", "-std=c++17", "--use_fast_math", "--ftz=false",
+                 ] + arch_flags + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+     # CUDA group norm V2 is tested on SM100
+-    if bare_metal_version >= Version("12.8"):
+-        arch_flags = ["-gencode=arch=compute_100,code=sm_100"]
+-    else:
+-        arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
+-
+-    ext_modules.append(
+-        CUDAExtension(
+-            name="group_norm_v2_cuda",
+-            sources=[
+-                "apex/contrib/csrc/group_norm_v2/gn.cpp",
+-                "apex/contrib/csrc/group_norm_v2/gn_cuda.cu",
+-                "apex/contrib/csrc/group_norm_v2/gn_utils.cpp",
+-            ] + glob.glob("apex/contrib/csrc/group_norm_v2/gn_cuda_inst_*.cu"),
+-            extra_compile_args={
+-                "cxx": ["-O2"] + version_dependent_macros,
+-                "nvcc": [
+-                    "-O2", "--use_fast_math", "--ftz=false",
+-                    "-U__CUDA_NO_HALF_CONVERSIONS__",
+-                    "-U__CUDA_NO_HALF_OPERATORS__",
+-                    "-U__CUDA_NO_BFLOAT16_CONVERSIONS__",
+-                    "-U__CUDA_NO_BFLOAT16_OPERATORS__",
+-                ] + arch_flags + version_dependent_macros,
+-            },
++    if bare_metal_version >= Version("12.4"):
++        if bare_metal_version >= Version("12.8"):
++            arch_flags = [
++                "-gencode=arch=compute_90,code=sm_90",
++                "-gencode=arch=compute_100,code=sm_100",
++                "-gencode=arch=compute_120,code=compute_120",
++            ]
++        else:
++            arch_flags = ["-gencode=arch=compute_90,code=compute_90"]
++        ext_modules.append(
++            CUDAExtension(
++                name="group_norm_v2_cuda",
++                sources=[
++                    "apex/contrib/csrc/group_norm_v2/gn.cpp",
++                    "apex/contrib/csrc/group_norm_v2/gn_cuda.cu",
++                    "apex/contrib/csrc/group_norm_v2/gn_utils.cpp",
++                ] + glob.glob("apex/contrib/csrc/group_norm_v2/gn_cuda_inst_*.cu"),
++                extra_compile_args={
++                    "cxx": ["-O2"] + version_dependent_macros,
++                    "nvcc": [
++                        "-O2", "--use_fast_math", "--ftz=false",
++                        "-U__CUDA_NO_HALF_CONVERSIONS__",
++                        "-U__CUDA_NO_HALF_OPERATORS__",
++                        "-U__CUDA_NO_BFLOAT16_CONVERSIONS__",
++                        "-U__CUDA_NO_BFLOAT16_OPERATORS__",
++                    ] + arch_flags + version_dependent_macros,
++                },
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
++            )
+         )
+-    )
+ 
+ if has_flag("--index_mul_2d", "APEX_INDEX_MUL_2D"):
+     if "--index_mul_2d" in sys.argv:
+@@ -597,6 +622,7 @@ if has_flag("--index_mul_2d", "APEX_INDEX_MUL_2D"):
+                 'cxx': ['-O3'] + version_dependent_macros,
+                 'nvcc':['-O3', '--use_fast_math', '--ftz=false'] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -616,6 +642,7 @@ if has_flag("--deprecated_fused_adam", "APEX_DEPRECATED_FUSED_ADAM"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -636,6 +663,7 @@ if has_flag("--deprecated_fused_lamb", "APEX_DEPRECATED_FUSED_LAMB"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -692,6 +720,7 @@ if has_flag("--fast_layer_norm", "APEX_FAST_LAYER_NORM"):
+                 ] + version_dependent_macros + generator_flag + cc_flag,
+             },
+             include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/layer_norm")],
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -746,6 +775,7 @@ if has_flag("--fmha", "APEX_FMHA"):
+                 os.path.join(this_dir, "apex/contrib/csrc"),
+                 os.path.join(this_dir, "apex/contrib/csrc/fmha/src"),
+             ],
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -807,6 +837,7 @@ if has_flag("--fast_multihead_attn", "APEX_FAST_MULTIHEAD_ATTN"):
+                 os.path.join(this_dir, "apex/contrib/csrc/multihead_attn/cutlass/include/"),
+                 os.path.join(this_dir, "apex/contrib/csrc/multihead_attn/cutlass/tools/util/include")
+             ],
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -826,6 +857,7 @@ if has_flag("--transducer", "APEX_TRANSDUCER"):
+                 "nvcc": ["-O3"] + version_dependent_macros + generator_flag,
+             },
+             include_dirs=[os.path.join(this_dir, "csrc"), os.path.join(this_dir, "apex/contrib/csrc/multihead_attn")],
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+     ext_modules.append(
+@@ -840,6 +872,7 @@ if has_flag("--transducer", "APEX_TRANSDUCER"):
+                 "cxx": ["-O3"] + version_dependent_macros,
+                 "nvcc": ["-O3"] + version_dependent_macros,
+             },
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -858,6 +891,7 @@ if has_flag("--cudnn_gbn", "APEX_CUDNN_GBN"):
+                 ],
+                 include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/cudnn-frontend/include")],
+                 extra_compile_args={"cxx": ["-O3", "-g"] + version_dependent_macros + generator_flag},
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
+             )
+         )
+ 
+@@ -873,6 +907,7 @@ if has_flag("--peer_memory", "APEX_PEER_MEMORY"):
+                 "apex/contrib/csrc/peer_memory/peer_memory.cpp",
+             ],
+             extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -897,6 +932,7 @@ if has_flag("--nccl_p2p", "APEX_NCCL_P2P"):
+                     "apex/contrib/csrc/nccl_p2p/nccl_p2p.cpp",
+                 ],
+                 extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
+             )
+         )
+     else:
+@@ -917,6 +953,7 @@ if has_flag("--fast_bottleneck", "APEX_FAST_BOTTLENECK"):
+                 sources=["apex/contrib/csrc/bottleneck/bottleneck.cpp"],
+                 include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/cudnn-frontend/include")],
+                 extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
+             )
+         )
+ 
+@@ -933,6 +970,7 @@ if has_flag("--fused_conv_bias_relu", "APEX_FUSED_CONV_BIAS_RELU"):
+                 sources=["apex/contrib/csrc/conv_bias_relu/conv_bias_relu.cpp"],
+                 include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/cudnn-frontend/include")],
+                 extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
+             )
+         )
+ 
+@@ -956,6 +994,7 @@ if has_flag("--nccl_allocator", "APEX_NCCL_ALLOCATOR"):
+                 include_dirs=[os.path.join(this_dir, "apex/apex/contrib/csrc/nccl_allocator")],
+                 libraries=["nccl"],
+                 extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++                runtime_library_dirs=["$ORIGIN/torch/lib"]
+             )
+         )
+     else:
+@@ -975,6 +1014,7 @@ if has_flag("--gpu_direct_storage", "APEX_GPU_DIRECT_STORAGE"):
+             include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/gpu_direct_storage")],
+             libraries=["cufile"],
+             extra_compile_args={"cxx": ["-O3"] + version_dependent_macros + generator_flag},
++            runtime_library_dirs=["$ORIGIN/torch/lib"]
+         )
+     )
+ 
+@@ -1027,7 +1067,7 @@ class BuildExtensionSeparateDir(BuildExtension):
+ 
+ 
+ setup(
+-    name="apex",
++    name="apex-johan",
+     version="0.1",
+     packages=find_packages(
+         exclude=("build", "csrc", "include", "tests", "dist", "docs", "tests", "examples", "apex.egg-info",)

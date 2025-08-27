@@ -710,7 +710,7 @@ jobs:
 
       - name: Apply Patch
         run: |
-          git apply --ignore-space-change --ignore-whitespace build_scripts/patches/0001-GROUPNORM.patch
+          git apply --ignore-space-change --ignore-whitespace build_scripts/patches/diff.patch
 
       - name: Set up Python
         uses: actions/setup-python@v5
