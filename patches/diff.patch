@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index fa61b72..5cce903 100644
+index fa61b72..98042ba 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -1,3 +1,4 @@
@@ -7,11 +7,12 @@ index fa61b72..5cce903 100644
  import sys
  import warnings
  import os
-@@ -186,6 +187,14 @@ if (TORCH_MAJOR > 1) or (TORCH_MAJOR == 1 and TORCH_MINOR > 4):
+@@ -186,6 +187,15 @@ if (TORCH_MAJOR > 1) or (TORCH_MAJOR == 1 and TORCH_MINOR > 4):
  version_dependent_macros = version_ge_1_1 + version_ge_1_3 + version_ge_1_5
  
  _, bare_metal_version = get_cuda_bare_metal_version(CUDA_HOME)
-+cuda_suffix = f"cu{bare_metal_version.major}{bare_metal_version.minor:02d}"
++cuda_suffix = f"cu{bare_metal_version.major}-{bare_metal_version.minor}"
++torch_suffix = f"torch{TORCH_MAJOR}-{TORCH_MINOR}"
 +
 +CUDAExtension = partial(
 +    CUDAExtension,
@@ -22,7 +23,7 @@ index fa61b72..5cce903 100644
  
  if has_flag("--distributed_adam", "APEX_DISTRIBUTED_ADAM"):
      if "--distributed_adam" in sys.argv:
-@@ -532,11 +541,15 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
+@@ -532,11 +542,15 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
  
      # CUDA group norm supports from SM70
      arch_flags = []
@@ -43,7 +44,7 @@ index fa61b72..5cce903 100644
  
      ext_modules.append(
          CUDAExtension(
-@@ -555,31 +568,35 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
+@@ -555,31 +569,35 @@ if has_flag("--group_norm", "APEX_GROUP_NORM"):
      )
  
      # CUDA group norm V2 is tested on SM100
@@ -103,12 +104,12 @@ index fa61b72..5cce903 100644
  
  if has_flag("--index_mul_2d", "APEX_INDEX_MUL_2D"):
      if "--index_mul_2d" in sys.argv:
-@@ -1027,7 +1044,7 @@ class BuildExtensionSeparateDir(BuildExtension):
+@@ -1027,7 +1045,7 @@ class BuildExtensionSeparateDir(BuildExtension):
  
  
  setup(
 -    name="apex",
-+    name=f"apex-johan-{cuda_suffix}",
++    name=f"apex-johan-{torch_suffix}-{cuda_suffix}",
      version="0.1",
      packages=find_packages(
          exclude=("build", "csrc", "include", "tests", "dist", "docs", "tests", "examples", "apex.egg-info",)
